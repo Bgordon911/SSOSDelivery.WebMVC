@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SOSDelivery</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body class="text-white">
+
+
+    <div class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="container">
+            @Html.ActionLink("SOSDelivery", "Index", "Home", new { area = "" }, htmlAttributes: new { @class = "navbar-brand" })
+
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-expanded="true">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav list-inline mr-">
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, htmlAttributes: new { @class = "navbar-brand" })</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">@Html.ActionLink("Restraunt", "Index", "Restraunt", null, htmlAttributes: new { @class = "navbar-brand" })</li>
+                        <li class="nav-item">@Html.ActionLink("Customer", "Index", "Customer", null, htmlAttributes: new { @class = "navbar-brand" })</li>
+                        <li class="nav-item">@Html.ActionLink("Product", "Index", "Product", null, htmlAttributes: new { @class = "navbar-brand" })</li>
+                        <li class="nav-item">@Html.ActionLink("Order", "Index", "Order", null, htmlAttributes: new { @class = "navbar-brand" })</li>
+                    }
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, htmlAttributes: new { @class = "navbar-brand" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, htmlAttributes: new { @class = "navbar-brand" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container fluid-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+    <footer class="text-center">
+        <p>&copy; @DateTime.Now.Year - SOSDelivery</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
